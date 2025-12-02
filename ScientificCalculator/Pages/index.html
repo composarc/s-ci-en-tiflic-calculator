@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="~/css/calculator.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.min.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="~/js/calculator.js" defer></script>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="container" id="calculator">
+        <div class="leftSide">
+            <input type="text" id="output" disabled="true">
+            <input type="text" id="input" placeholder="Input">
+
+            <div class="modeButtons basic">
+                <div class="alphabetic">
+                    <button id="alphaButton" class="alphaButton">ALPHA</button>
+                </div>
+
+                <div class="angleFormat">
+                    <button id="radButton" class="leftButton">RAD</button>
+                    <button id="degButton" class="rightButton">DEG</button>
+                </div>
+
+                <div class="fracDec">
+                    <button id="fracButton" class="leftButton">FRAC</button>
+                    <button id="deciButton" class="rightButton">DEC</button>
+                </div>
+
+                <div class="mathBase">
+                    <button id="mathButton" class="leftButton">MATH</button>
+                    <button id="baseButton" class="rightButton">BASE-N</button>
+                </div>
+
+                <div class="numSys">
+                    <button id="binButton" class="leftButton">BIN</button>
+                    <button id="octButton" class="middleButton">OCT</button>
+                    <button id="hexButton" class="middleButton">HEX</button>
+                    <button id="decButton" class="rightButton">DEC</button>
+                </div>
+            </div>
+
+            <div class="buttons" disabled="false">
+                <div class="complexButtons">
+
+                    <button data-value="a">
+                        <label class="alphabets">a</label>
+                        x!
+                    </button>
+                    <button data-value="b">
+                        <label class="alphabets">b</label>
+                        nPr
+                    </button>
+                    <button data-value="c">
+                        <label class="alphabets">c</label>
+                        nCr
+                    </button>
+                    <button data-value="d">
+                        <label class="alphabets">d</label>
+                        %
+                    </button>
+                    <button data-value="e">
+                        <label class="alphabets">e</label>
+                        (-)
+                    </button>
+                    <button data-value="f">
+                        <label class="alphabets">f</label>
+                        abs
+                    </button>
+
+                    <button data-value="g">
+                        <label class="alphabets">g</label>
+                        √x
+                    </button>
+                    <button data-value="h">
+                        <label class="alphabets">h</label>
+                        ∛x
+                    </button>
+                    <button data-value="i">
+                        <label class="alphabets">i</label>
+                        x<sup>2</sup>
+                    </button>
+                    <button data-value="j">
+                        <label class="alphabets">j</label>
+                        x<sup>Y</sup>
+                    </button>
+                    <button data-value="k">
+                        <label class="alphabets">k</label>
+                        x<sup>-1</sup>
+                    </button>
+                    <button data-value="l">
+                        <label class="alphabets">l</label>
+                        dy/dx
+                    </button>
+
+                    <button data-value="m">
+                        <label class="alphabets">m</label>
+                        sin
+                    </button>
+                    <button data-value="n">
+                        <label class="alphabets">n</label>
+                        cos
+                    </button>
+                    <button data-value="o">
+                        <label class="alphabets">o</label>
+                        tan
+                    </button>
+                    <button data-value="p">
+                        <label class="alphabets">p</label>
+                        log
+                    </button>
+                    <button data-value="q">
+                        <label class="alphabets">q</label>
+                        ln
+                    </button>
+                    <button data-value="r">
+                        <label class="alphabets">r</label>
+                        e<sup>x</sup>
+                    </button>
+
+                    <button data-value="s">
+                        <label class="alphabets">s</label>
+                        sinh
+                    </button>
+                    <button data-value="t">
+                        <label class="alphabets">t</label>
+                        cosh
+                    </button>
+                    <button data-value="u">
+                        <label class="alphabets">u</label>
+                        tanh
+                    </button>
+                    <button data-value="v">
+                        <label class="alphabets">v</label>
+                        sin<sup>-1</sup>
+                    </button>
+                    <button data-value="w">
+                        <label class="alphabets">w</label>
+                        cos<sup>-1</sup>
+                    </button>
+                    <button data-value="x">
+                        <label class="alphabets">x</label>
+                        tan<sup>-1</sup>
+                    </button>
+
+                    <button class="base basic">AND</button>
+                    <button class="base basic">OR</button>
+                    <button class="base basic">XOR</button>
+                    <button class="base basic">NOT</button>
+                    <button class="base basic"><<</button>
+                    <button class="base basic">>></button>
+
+                    <button class="base hexa">A</button>
+                    <button class="base hexa">B</button>
+                    <button class="base hexa">C</button>
+                    <button class="base hexa">D</button>
+                    <button class="base hexa">E</button>
+                    <button class="base hexa">F</button>
+
+                </div>
+
+                <div class="basicButtons">
+                    <button data-value="y">
+                        <label class="alphabets">y</label>
+                        M+
+                    </button>
+                    <button data-value="z">
+                        <label class="alphabets">z</label>
+                        M-
+                    </button>                    <button>MR</button>
+                    <button class="basic">(</button>
+                    <button class="basic">)</button>
+
+                    <button class="greyButton octal hexa dec">7</button>
+                    <button class="greyButton hexa dec">8</button>
+                    <button class="greyButton hexa dec">9</button>
+                    <button class="greyButton basic dec">DEL</button>
+                    <button class="greyButton basic dec">CLR</button>
+
+
+                    <button class="greyButton octal hexa dec">4</button>
+                    <button class="greyButton octal hexa dec">5</button>
+                    <button class="greyButton octal hexa dec">6</button>
+                    <button class="whiteButton basic dec">x</button>
+                    <button class="whiteButton basic dec">&#247</button>
+
+                    <button class="greyButton bin octal hexa dec">1</button>
+                    <button class="greyButton octal hexa dec">2</button>
+                    <button class="greyButton octal hexa dec">3</button>
+                    <button class="whiteButton basic">+</button>
+                    <button class="whiteButton basic">-</button>
+
+                    <button class="greyButton">π</button>
+                    <button class="greyButton bin hexa octal dec">0</button>
+                    <button class="greyButton">.</button>
+                    <button class="blueButton basic">Ans</button>
+                    <button class="blueButton basic">=</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="rightSide">
+            <h4>Log</h4>
+            <div class="historyContainer">
+
+            </div>
+        </div>
+    </div>
+</body>
+
